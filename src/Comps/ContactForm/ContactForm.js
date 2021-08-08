@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
+
 // import PropTypes from "prop-types";
 import { /*connect ,*/ useDispatch } from "react-redux";
 // import contactsActions from "../../redux/contacts-actions";
@@ -12,21 +13,17 @@ export default function ContactForm() {
   // const [number, setNumber] = useState();
   const [form, setForm] = useState(initState); 
   const dispatch=useDispatch()
-
   // const handleChangeName = e => setName(e.target.value);
   // const handleChangeNumber = e => setNumber(e.target.value);
-
   const inputHandler = e =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = e => {
     e.preventDefault();
     form.id = nanoid(5); 
-    dispatch(addItem(form)); 
+    dispatch(addItem(form));
     setForm(initState); 
-    // onSubmit({ name, number });
-    // setName("");
-    // setNumber("");
+    // onSubmit({ name, number });    // setName("");    // setNumber("");
   };
 
   return (
